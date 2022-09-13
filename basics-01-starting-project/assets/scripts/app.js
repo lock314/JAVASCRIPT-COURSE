@@ -1,5 +1,6 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
+let logEntries = [];
 
 // Gets input from input field
 function getUserNumberInput() {
@@ -15,28 +16,64 @@ function createAndWriteLog(operator, resultBeforeCalc, calcNumber) {
 function add() {
   const enteredNumber = getUserNumberInput();
   const initalResult = currentResult;
-  currentResult = currentResult + enteredNumber;
+  currentResult += enteredNumber;
   createAndWriteLog("+", initalResult, enteredNumber);
+  const logEntry = {
+    operation: "ADD",
+    prevResult: initalResult,
+    operand: enteredNumber,
+    result: currentResult,
+  };
+  logEntries.push(logEntry);
+  console.log(logEntry.operation);
+  console.log(logEntries);
 }
 
 function subtract() {
   const enteredNumber = getUserNumberInput();
   const initalResult = currentResult;
-  currentResult = currentResult - enteredNumber;
+  currentResult -= enteredNumber;
   createAndWriteLog("-", initalResult, enteredNumber);
+  const logEntry = {
+    operation: "SUBTRACT",
+    prevResult: initalResult,
+    operand: enteredNumber,
+    result: currentResult,
+  };
+  logEntries.push(logEntry);
+  console.log(logEntry.operation);
+  console.log(logEntries);
 }
 
 function multpily() {
   const initalResult = currentResult;
   const enteredNumber = getUserNumberInput();
-  currentResult = currentResult * enteredNumber;
+  const logEntry = {
+    operation: "MULTIPLY",
+    prevResult: initalResult,
+    operand: enteredNumber,
+    result: currentResult,
+  };
+  logEntries.push(logEntry);
+  console.log(logEntry.operation);
+  console.log(logEntries);
+  currentResult *= enteredNumber;
   createAndWriteLog("x", initalResult, enteredNumber);
 }
 
 function divide() {
   const initalResult = currentResult;
   const enteredNumber = getUserNumberInput();
-  currentResult = currentResult / enteredNumber;
+  const logEntry = {
+    operation: "DIVIDE",
+    prevResult: initalResult,
+    operand: enteredNumber,
+    result: currentResult,
+  };
+  logEntries.push(logEntry);
+  console.log(logEntry.operation);
+  console.log(logEntries);
+  currentResult /= enteredNumber;
   createAndWriteLog("/", initalResult, enteredNumber);
 }
 
